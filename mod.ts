@@ -9,7 +9,7 @@ import {
     name,
 } from "./symbol.ts"
 
-import {Attribute} from "./Attribute.ts"
+import Attribute from "./Attribute.ts"
 
 const namer = new Attribute(
     name,

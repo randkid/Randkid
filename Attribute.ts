@@ -9,7 +9,7 @@ type RealizeMap<T extends Symbol[]> = {
     [K in keyof T]: Realize<T[K]>
 }
 
-export class Attribute<T extends symbol, R extends symbol[]> {
+export default class Attribute<T extends symbol, R extends symbol[]> {
     result: T
     gen: (seed: number, ...val: RealizeMap<R>) => Realize<T>
     require: R
