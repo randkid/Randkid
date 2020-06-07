@@ -3,16 +3,15 @@ import {
     name_f,
     Discrete,
 } from "./deps.ts"
+
 import {
     gender,
+    name,
 } from "./symbol.ts"
-
-console.log(
-    new Discrete(<[string, number][]> name_m).rand(Math.random())
-)
 
 interface Kid {
     [gender]: "m" | "f",
+    [name]: string,
 }
 
 type Realize<T> = T extends keyof Kid ? Kid[T] : unknown
@@ -33,7 +32,7 @@ class Distribution<T, R extends Symbol[]> {
     }
 }
 
-const name = new Distribution(
+const namer = new Distribution(
     (seed, gender) => 
         new Discrete(
             <[string, number][]> {m: name_m, f: name_f}[gender]
