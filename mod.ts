@@ -9,9 +9,9 @@ import {
     name,
 } from "./symbol.ts"
 
-import {Distribution} from "./Distribution.ts"
+import {Attribute} from "./Attribute.ts"
 
-const namer = new Distribution(
+const namer = new Attribute(
     name,
     (seed, gender) => 
         new Discrete(
