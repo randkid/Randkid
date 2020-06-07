@@ -1,7 +1,4 @@
-import Kid, {
-    gender,
-    name,
-} from "./symbol.ts"
+import type Kid from "./symbol.ts"
 
 type Realize<T> = T extends keyof Kid ? Kid[T] : unknown
 
