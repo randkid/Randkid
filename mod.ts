@@ -20,22 +20,26 @@ type RealizeMap<T extends Symbol[]> = {
     [K in keyof T]: Realize<T[K]>
 }
 
-class Distribution<T, R extends Symbol[]> {
-    gen: (seed: number, ...val: RealizeMap<R>) => T
+class Distribution<T extends symbol, R extends symbol[]> {
+    result: T
+    gen: (seed: number, ...val: RealizeMap<R>) => Realize<T>
     require: R
     constructor(
-        gen: (seed: number, ...val: RealizeMap<R>) => T,
+        result: T,
+        gen: (seed: number, ...val: RealizeMap<R>) => Realize<T>,
         ...require: R
     ){
+        this.result = result
         this.gen = gen
         this.require = require
     }
 }
 
 const namer = new Distribution(
+    name,
     (seed, gender) => 
         new Discrete(
             <[string, number][]> {m: name_m, f: name_f}[gender]
         ).rand(seed), 
-    gender
+    gender,
 )
