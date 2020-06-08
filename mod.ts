@@ -11,6 +11,8 @@ import {
 
 import Attribute from "./Attribute.ts"
 
+import Entity from "./Entity.ts"
+
 const namer = new Attribute(
     name,
     (seed, gender) => 
