@@ -30,4 +30,7 @@ const namer = new Attribute(
     gender,
 )
 
-console.log(new Entity(genderer, namer)[gender])
+// console.log(genderer.gen(Math.random()))
+let entity = new Entity(genderer, namer)
+console.log(entity.get(name))
+console.log(entity.get(name))

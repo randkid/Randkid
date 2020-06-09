@@ -1,28 +1,22 @@
-import Attribute, { Realize } from "./Attribute.ts"
-
-type Seeds<T extends symbol> = Record<T, Realize<T>>
+import type Attribute from "./Attribute.ts"
 
 export default class Entity {
-    attributes: Attribute<any, any[]>[];
-    seeds: Seeds<any> = {};
-    // [attribute: symbol]: any
-    constructor(...attributes: Attribute<any, any[]>[]) {
-        this.attributes = attributes
-        
-        for(const attribute of attributes) {
-            Object.defineProperty(this, attribute.result, {
-                get: function(){
-                    if(attribute.result in this.seeds) {
-                        return this.seeds[attribute.result]
-                    }else{
-                        const inputValues = attribute.require.map(
-                            requireAttrSymbol =>
-                                this[requireAttrSymbol]
-                        )
-                        return this.seeds[attribute.result] = attribute.gen(Math.random(), ...inputValues)
-                    }
-                }
-            })
+    attributesMap: Map<symbol, Attribute<any, any[]>> = new Map;
+    seedMap: Map<symbol, number> = new Map;
+
+    constructor(...attributes: Attribute<any, any[]>[]){
+        attributes.forEach(
+            attribute => this.attributesMap.set(attribute.result, attribute)
+        )
+    }
+    get(key: symbol){
+        const attribute = this.attributesMap.get(key)
+        const requireValues: any[] = attribute?.require.map(
+            requireSymbol => this.get(requireSymbol)
+        ) || []
+        if( !this.seedMap.get(key) ){
+            this.seedMap.set(key, Math.random())
         }
+        return attribute?.gen(this.seedMap.get(key) as number, ...requireValues)
     }
 }
