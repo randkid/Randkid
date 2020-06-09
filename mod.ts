@@ -31,6 +31,6 @@ const namer = new Attribute(
 )
 
 // console.log(genderer.gen(Math.random()))
-let entity = new Entity(genderer, namer)
+const entity = new Entity(genderer, namer)
 console.log(entity.get(name))
 console.log(entity.get(name))

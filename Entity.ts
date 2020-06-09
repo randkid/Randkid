@@ -1,4 +1,4 @@
-import type Attribute from "./Attribute.ts"
+import Attribute, { Realize } from "./Attribute.ts"
 
 export default class Entity {
     attributesMap: Map<symbol, Attribute<any, any[]>> = new Map;
@@ -9,7 +9,7 @@ export default class Entity {
             attribute => this.attributesMap.set(attribute.result, attribute)
         )
     }
-    get(key: symbol){
+    get<T extends symbol>(key: T): Realize<T>{
         const attribute = this.attributesMap.get(key)
         const requireValues: any[] = attribute?.require.map(
             requireSymbol => this.get(requireSymbol)
