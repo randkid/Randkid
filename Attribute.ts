@@ -1,8 +1,8 @@
 import type Kid from "./symbol.ts"
 
-type Realize<T> = T extends keyof Kid ? Kid[T] : unknown
+export type Realize<T> = T extends keyof Kid ? Kid[T] : unknown
 
-type RealizeMap<T extends Symbol[]> = {
+export type RealizeMap<T extends Symbol[]> = {
     [K in keyof T]: Realize<T[K]>
 }
 

@@ -13,6 +13,14 @@ import Attribute from "./Attribute.ts"
 
 import Entity from "./Entity.ts"
 
+const genderer = new Attribute(
+    gender,
+    (seed) => 
+        <"m" | "f">
+        new Discrete(
+            [["m", 1], ["f", 1]]
+        ).rand(seed),
+)
 const namer = new Attribute(
     name,
     (seed, gender) => 
@@ -22,4 +30,4 @@ const namer = new Attribute(
     gender,
 )
 
-console.log(namer.gen(Math.random(), "m"))
+console.log(new Entity(genderer, namer)[gender])
