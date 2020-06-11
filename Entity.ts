@@ -19,4 +19,10 @@ export default class Entity {
         }
         return attribute?.gen(this.seedMap.get(key) as number, ...requireValues)
     }
+    toRecord(): Record<symbol, any>{
+        const entries = [...this.attributesMap.keys()].map(
+            key => [key, this.get(key)]
+        )
+        return Object.fromEntries(entries)
+    }
 }
