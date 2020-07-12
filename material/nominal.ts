@@ -7,7 +7,7 @@ export default read(async CSV => {
 
     CSV[Symbol.asyncIterator]().next() // Skip column names
 
-    process(
+    await process(
         () => result.push([]),
         [
             cell => result[result.length - 1].push(cell.trim()),
