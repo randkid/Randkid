@@ -10,7 +10,7 @@ export default read(async CSV => {
     await process(
         () => result.push([]),
         [
-            cell => result[result.length - 1].push(cell.trim()),
+            ,
             cell => result[result.length - 1].push(cell.trim()),
         ]
     )(CSV)
