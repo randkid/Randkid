@@ -1,18 +1,36 @@
 import read from "./read.ts"
 import process from "./process.ts"
+import { Nominal } from "./material.ts"
 
 export default read(async CSV => {
-    const result: string[][] = [];
+    const categories: string[] = []
+    const freqAccList: number[] = []
     let freqAcc = 0
 
     CSV[Symbol.asyncIterator]().next() // Skip column names
 
     await process(
-        () => result.push([]),
+        () => {},
         [
-            ,
-            cell => result[result.length - 1].push(cell.trim()),
+            category => {
+                categories.push(category)
+            },
+            freq => {
+                freqAccList.push(freqAcc += Number(freq))
+            },
         ]
     )(CSV)
-    return result
+    
+    const material: Nominal = {
+        rand: seed => {
+            const range = freqAcc
+            let i = 0
+            while(freqAccList[i] < seed * range) {
+                i++
+            }
+            return categories[i]
+        },
+        categories
+    }
+    return material
 })
