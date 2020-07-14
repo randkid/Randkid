@@ -1,3 +1,3 @@
-import { nominal } from "./material.ts"
+import { nominal } from "./mod.ts"
 
 console.log(await nominal("./bloodType.csv"))
