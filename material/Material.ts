@@ -34,14 +34,22 @@ export class Categorical<T> extends Material<T, any> {
         super(args)
     }
 }
-export interface Nominal extends Categorical<string> {
-
+export class Nominal extends Categorical<string> {
+    constructor(args: Arg<string, any>){
+        super(args)
+    }
 }
 
-export interface Numerical extends Material<number, any> {
-    range: [number, number]
+export class Numerical extends Material<number, any> {
+    range: [number, number] = [0, 0]
+    constructor(args: Arg<number, any>){
+        super(args)
+    }
 }
 
-export interface ComplexNumerical extends Material<Record<string, number>, any> {
-    range: Record<string, [number, number]>
+export class ComplexNumerical extends Material<Record<string, number>, any> {
+    range: Record<string, [number, number]> = {}
+    constructor(args: Arg<Record<string, number>, any>){
+        super(args)
+    }
 }

@@ -21,8 +21,8 @@ export default read(async CSV => {
         ]
     )(CSV)
     
-    const material: Nominal = new Material({
-        rand: seed => {
+    const material = new Nominal({
+        rand(seed){
             const range = freqAcc
             let i = 0
             while(freqAccList[i] < seed * range) {
