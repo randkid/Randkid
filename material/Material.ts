@@ -1,4 +1,5 @@
 export interface Material<T> {
+    param: Material<any>[]
     rand(seed: number): T
 }
 export interface Categorical<T> extends Material<T> {
