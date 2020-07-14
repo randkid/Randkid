@@ -1,6 +1,6 @@
 import read from "./read.ts"
 import process from "./process.ts"
-import { Nominal } from "./Material.ts"
+import { Material, Nominal } from "./Material.ts"
 
 export default read(async CSV => {
     const categories: string[] = []
@@ -21,8 +21,7 @@ export default read(async CSV => {
         ]
     )(CSV)
     
-    const material: Nominal = {
-        param: [],
+    const material: Nominal = new Material({
         rand: seed => {
             const range = freqAcc
             let i = 0
@@ -32,6 +31,6 @@ export default read(async CSV => {
             return categories[i]
         },
         categories
-    }
+    })
     return material
 })
