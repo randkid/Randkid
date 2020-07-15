@@ -1,3 +1,5 @@
+import planter from "https://raw.githubusercontent.com/gnlow/planter/master/mod.ts"
+
 type MaterialOutputs<T extends Material<any, any[]>[]> = {
     [K in keyof T]: T[K] extends T[number] ? ReturnType<T[K]["rand"]> : any
 }
@@ -23,9 +25,10 @@ export class Material<T, I extends Material<any, any[]>[]> {
         this.range = range
     }
     rand(seed: number): T {
+        const plant = planter(seed)
         return this._rand(
             seed, 
-            ...this.inputMaterials.map(material => material.rand(0)) as any // should fixed
+            ...this.inputMaterials.map((material, index) => material.rand(plant[index])) as any // should fixed
         )
     }
 }
