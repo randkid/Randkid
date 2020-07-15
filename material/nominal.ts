@@ -22,6 +22,7 @@ export default read(async CSV => {
     )(CSV)
     
     const material = new Nominal({
+        inputMaterials: [],
         rand(seed){
             const range = freqAcc
             let i = 0
