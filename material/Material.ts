@@ -1,17 +1,16 @@
-type MaterialOutputs<T extends Material<any, any>[]> = {
-    [K in keyof T]: K extends number ? ReturnType<T[K]["rand"]> : any
+type MaterialOutputs<T extends Material<any, any[]>[]> = {
+    [K in keyof T]: T[K] extends T[number] ? ReturnType<T[K]["rand"]> : any
 }
-
-interface Arg<T, I extends Material<any, any>[]> {
+interface Arg<T, I extends Material<any, any[]>[]> {
     inputMaterials: I
     rand: (seed: number, ...inputValues: MaterialOutputs<I>) => T
 
     categories?: Iterable<T>
     range?: [number, number] | Record<string, [number, number]>
 }
-export class Material<T, I extends Material<any, any>[]> {
+export class Material<T, I extends Material<any, any[]>[]> {
     inputMaterials: I
-    private _rand: (seed: number, ...inputValues: MaterialOutputs<I>) => T
+    _rand: (seed: number, ...inputValues: MaterialOutputs<I>) => T
 
     categories?: Iterable<T>
     range?: [number, number] | Record<string, [number, number]>
@@ -31,26 +30,26 @@ export class Material<T, I extends Material<any, any>[]> {
     }
 }
 
-export class Categorical<T, I extends Material<any, any>[]> extends Material<T, I> {
+export class Categorical<T, I extends Material<any, any[]>[]> extends Material<T, I> {
     categories: Iterable<T> = []
     constructor(args: Arg<T, I>){
         super(args)
     }
 }
-export class Nominal<I extends Material<any, any>[]> extends Categorical<string, I> {
+export class Nominal<I extends Material<any, any[]>[]> extends Categorical<string, I> {
     constructor(args: Arg<string, I>){
         super(args)
     }
 }
 
-export class Numerical<I extends Material<any, any>[]> extends Material<number, I> {
+export class Numerical<I extends Material<any, any[]>[]> extends Material<number, I> {
     range: [number, number] = [0, 0]
     constructor(args: Arg<number, I>){
         super(args)
     }
 }
 
-export class ComplexNumerical<I extends Material<any, any>[]> extends Material<Record<string, number>, I> {
+export class ComplexNumerical<I extends Material<any, any[]>[]> extends Material<Record<string, number>, I> {
     range: Record<string, [number, number]> = {}
     constructor(args: Arg<Record<string, number>, I>){
         super(args)
