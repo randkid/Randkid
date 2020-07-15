@@ -1,6 +1,6 @@
 import read from "./read.ts"
 import process from "./process.ts"
-import { Material, Nominal } from "./Material.ts"
+import { Nominal } from "./Material.ts"
 
 export default read(async CSV => {
     const categories: string[] = []

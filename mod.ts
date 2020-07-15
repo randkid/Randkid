@@ -1,1 +1,1 @@
-export {default as nominal} from "./material/nominal.ts"
+export {default as nominalCSV} from "./material/nominalCSV.ts"
