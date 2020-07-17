@@ -1,8 +1,3 @@
-export {default as weightedList} from "./material/weightedList.ts"
-export {
-    Material,
-    Categorical,
-    Nominal,
-    Numerical,
-    ComplexNumerical,
-} from "./material/Material.ts"
+export {default as Material} from "./material/Material.ts"
+export {default as Categorical} from "./material/Categorical.ts"
+export {default as Nominal} from "./material/Nominal.ts"
