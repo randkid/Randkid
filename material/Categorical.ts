@@ -1,6 +1,6 @@
-import Material, {DefaultArg} from "./Material.ts"
+import Material, {Arg as MaterialArg} from "./Material.ts"
 
-interface Arg<T, I extends Material<any, any[]>[]> extends DefaultArg<T, I> {
+export interface Arg<T, I extends Material<any, any[]>[]> extends MaterialArg<T, I> {
     categories: Iterable<T>
 }
 
