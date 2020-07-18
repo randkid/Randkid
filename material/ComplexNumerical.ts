@@ -5,7 +5,7 @@ export interface Arg<T, I extends Material<any, any[]>[]> extends MaterialArg<T,
 }
 
 export default class ComplexNumerical<T, I extends Material<any, any[]>[]> extends Material<T, I> {
-    ranges: Record<string, [number, number]> = {}
+    ranges: Record<string, [number, number]>
     constructor({inputMaterials, rand, ranges}: Arg<T, I>){
         super({inputMaterials, rand})
         this.ranges = ranges

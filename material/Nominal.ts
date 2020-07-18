@@ -5,7 +5,6 @@ export interface Arg<I extends Material<any, any[]>[]> extends CategoricalArg<st
 }
 
 export default class Nominal<I extends Material<any, any[]>[]> extends Categorical<string, I> {
-    categories: Iterable<string> = []
     constructor(args: Arg<I>){
         super(args)
     }
