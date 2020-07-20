@@ -1,4 +1,10 @@
-# Randkid
+<p align="center">
+  <img src="https://raw.githubusercontent.com/randkid/Randkid/master/logo.svg" width="200"></img>
+</p>
+<h1 align="center">
+  Randkid
+</h1>
+
 ## 목적
 - 게임 NPC용 데이터 생성
 - 봇 프로필 데이터 생성
