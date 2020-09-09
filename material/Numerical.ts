@@ -5,7 +5,7 @@ export interface Arg<T extends number, I extends Material<any, any[]>[]> extends
 }
 
 export default class Numerical<T extends number, I extends Material<any, any[]>[]> extends Material<T, I> {
-    range: [number, number]
+    range
     constructor({inputMaterials, rand, range}: Arg<T, I>){
         super({inputMaterials, rand})
         this.range = range

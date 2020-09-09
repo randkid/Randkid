@@ -5,7 +5,7 @@ export interface Arg<T extends number[], I extends Material<any, any[]>[]> exten
 }
 
 export default class NumericalTuple<T extends number[], I extends Material<any, any[]>[]> extends Material<T, I> {
-    ranges: [number, number][]
+    ranges
     constructor({inputMaterials, rand, ranges}: Arg<T, I>){
         super({inputMaterials, rand})
         this.ranges = ranges

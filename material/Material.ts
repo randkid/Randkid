@@ -8,8 +8,8 @@ export interface Arg<T, I extends Material<any, any[]>[]> {
     rand: (seed: number, ...inputValues: MaterialOutputs<I>) => T
 }
 export default class Material<T, I extends Material<any, any[]>[]> {
-    inputMaterials: I
-    _rand: (seed: number, ...inputValues: MaterialOutputs<I>) => T
+    inputMaterials
+    _rand
     private uniqueKey: number
     constructor({inputMaterials, rand}: Arg<T, I>){
         this.inputMaterials = inputMaterials
