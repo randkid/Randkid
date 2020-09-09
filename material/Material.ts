@@ -1,7 +1,7 @@
 import {hash} from "https://raw.githubusercontent.com/gnlow/planter/master/mod.ts"
 
-type MaterialOutputs<T extends [...Material<any, any[]>[]]> = {
-    [K in keyof T]: T[K] extends T[number] ? ReturnType<T[K]["rand"]> : never
+type MaterialOutputs<T extends Material<any, any[]>[]> = {
+    [K in keyof T]: T[K] extends T[number] ? ReturnType<T[K]["rand"]> : any
 }
 export interface Arg<T, I extends Material<any, any[]>[]> {
     inputMaterials: I
