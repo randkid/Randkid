@@ -1,0 +1,1 @@
+export default {"categories":["m","f"],"freqAccList":[2516242,4861506]}
