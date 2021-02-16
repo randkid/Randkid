@@ -1,4 +1,4 @@
-import { Nominal, tuple } from "../../mod.ts"
+import { Nominal, tuple } from "../../src/mod.ts"
 
 import residence from "../residence/mod.ts"
 import birthdate from "../birthdate/mod.ts"

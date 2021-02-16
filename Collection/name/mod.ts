@@ -1,5 +1,5 @@
 import {weightedList} from "./deps.ts"
-import {Nominal} from "../../mod.ts"
+import {Nominal} from "../../src/mod.ts"
 import gender from "../gender/mod.ts"
 
 import f from "./f.js"

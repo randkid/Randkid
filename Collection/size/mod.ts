@@ -1,5 +1,5 @@
 import { PCA } from "https://raw.githubusercontent.com/gnlow/deno-pca/master/mod.ts"
-import { NumericalTuple, tuple } from "../../mod.ts"
+import { NumericalTuple, tuple } from "../../src/mod.ts"
 import birthdate from "../birthdate/mod.ts"
 import gender from "../gender/mod.ts"
 import { gaussian } from "https://deno.land/x/gaussian/mod.ts"
