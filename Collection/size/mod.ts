@@ -18,6 +18,6 @@ export default new NumericalTuple({
             .map((σ: number, i: number) => 
                 gaussian(0, σ**2).ppf(hash(seed, i))
             )
-        return Array.from(pca.invert([randomized]).data[0]) as number[]
+        return Array.from(pca.invert([randomized] as any).data![0]) as number[]
     }
 })

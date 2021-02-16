@@ -2,8 +2,12 @@ import { Nominal, tuple } from "../../src/mod.ts"
 
 import residence from "../residence/mod.ts"
 import birthdate from "../birthdate/mod.ts"
-import cheerio from "https://dev.jspm.io/cheerio"
-import proj4 from "https://dev.jspm.io/proj4"
+import _cheerio from "https://dev.jspm.io/cheerio"
+import _proj4 from "https://dev.jspm.io/proj4"
+
+// Disable type check for dependencies
+const cheerio: any = _cheerio
+const proj4: any = _proj4
 
 const form = (data: Record<string, string>) => {
     let result = new URLSearchParams
