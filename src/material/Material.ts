@@ -1,4 +1,4 @@
-import {hash} from "https://raw.githubusercontent.com/gnlow/planter/master/mod.ts"
+import { shuffle, randKey } from "../shuffle.ts"
 
 type MaterialOutputs<T extends Material<any, any[]>[]> = {
     [K in keyof T]: T[K] extends T[number] ? ReturnType<T[K]["rand"]> : any
@@ -14,11 +14,11 @@ export default class Material<T, I extends Material<any, any[]>[]> {
     constructor({inputMaterials, rand}: Arg<T, I>){
         this.inputMaterials = inputMaterials
         this._rand = rand
-        this.uniqueKey = Math.random()
+        this.uniqueKey = randKey()
     }
     rand(seed: number): T {
         return this._rand(
-            hash(seed, this.uniqueKey), 
+            shuffle(this.uniqueKey)(seed), 
             ...this.inputMaterials.map((material, index) => material.rand(seed)) as any // should fixed
         )
     }
